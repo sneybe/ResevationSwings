@@ -35,16 +35,7 @@ public class Hotel implements Serializable {
     private Long codepostale;
     private String rue;
     
-    @OneToMany(mappedBy ="hotel")
-    private  Set<Chambre>chambres=new HashSet<>();
-
-    public Set<Chambre> getChambres() {
-        return chambres;
-    }
-
-    public void setChambres(Set<Chambre> chambres) {
-        this.chambres = chambres;
-    }
+   
     
     public String getNom() {
         return nom;

@@ -7,17 +7,18 @@ package altelierSwings.vue;
 
 import atelierswings.entity.Hotel;
 import atelierswings.service.HotelService;
+import java.awt.BorderLayout;
 
 /**
  *
  * @author formation
  */
-public class JPanelHotel4 extends javax.swing.JPanel {
+public class JPanelHotel extends javax.swing.JPanel {
 
     /**
      * Creates new form JPanelHotel4
      */
-    public JPanelHotel4() {
+    public JPanelHotel() {
         initComponents();
     }
 
@@ -194,6 +195,9 @@ public class JPanelHotel4 extends javax.swing.JPanel {
         
         hs.Ajouter(h);
         
+        JPanelPrincipal parent= (JPanelPrincipal)this.getParent();
+        
+        parent.remplacecomposantCentral(new JPanelListeHotels());
      
         
     }//GEN-LAST:event_jButton1ActionPerformed

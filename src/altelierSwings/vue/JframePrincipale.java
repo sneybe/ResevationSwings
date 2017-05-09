@@ -21,8 +21,8 @@ public class JframePrincipale extends JFrame {
         this.setSize(400, 300);
         
 
-        this.add(new JPanelHotel4());
-        this.add(new JPanelChambre());
+        this.add(new JPanelPrincipal());
+        
         this.setVisible(true);
 
     }

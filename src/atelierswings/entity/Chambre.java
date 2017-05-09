@@ -28,9 +28,7 @@ public class Chambre implements Serializable {
     private Long numero;
     private Double prix;
 
-    @ManyToOne
-    @JoinColumn(name="hotel_ID")       
-    private Hotel hotel;
+   
     
     public String getNom() {
         return nom;
