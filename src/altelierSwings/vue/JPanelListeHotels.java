@@ -103,6 +103,9 @@ public class JPanelListeHotels extends javax.swing.JPanel {
     JPanelPrincipal parent=(JPanelPrincipal)this.getParent();
     
     parent.remplacecomposantCentral(new JPanelHotel());
+    
+    
+    
        
     }//GEN-LAST:event_jBAjouterActionPerformed
 

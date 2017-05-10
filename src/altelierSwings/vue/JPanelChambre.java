@@ -118,6 +118,10 @@ public class JPanelChambre extends javax.swing.JPanel {
         ChambreService chs =new ChambreService();
 
         chs.AjouterChambre(ch);
+        
+        JPanelPrincipal parent= (JPanelPrincipal)this.getParent();
+        
+        parent.remplacecomposantCentral(new JpanelListeChambre());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

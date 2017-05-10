@@ -7,9 +7,11 @@ package atelierswings.service;
 
 import atelierswings.entity.Chambre;
 import atelierswings.entity.Hotel;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -25,6 +27,20 @@ public class ChambreService {
         e.getTransaction().begin();
         e.persist(chambre);
         e.getTransaction().commit();
+    }
+    
+    public List<Chambre> ListerChambre(){
+        
+       EntityManagerFactory en=Persistence.createEntityManagerFactory("PU");
+       EntityManager e =en.createEntityManager(); 
+       
+       Query query=e.createQuery("SELECT c "
+               + "FROM Chambre c "
+               + "ORDER BY c.nom ");
+               
+        List<Chambre> chambre=query.getResultList();
+        
+        return chambre;
     }
     
 }

@@ -6,6 +6,7 @@
 package atelierswings.service;
 
 import atelierswings.entity.Hotel;
+import static atelierswings.entity.Hotel_.id;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,11 +46,16 @@ public class HotelService {
 
     }
 
-    public void afficherhotel() {
+    public void ModifierHotel( Hotel hotel, long idhotel) {
         EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
         EntityManager en1 =en.createEntityManager();
         
-       // String ef = en1.find(Hotel.class, hotel);
+     //  Hotel hotel = en1.find( Hotel.class, idhotel);
+       
+       en1.getTransaction().begin();
+       
+       
+       en1.getTransaction().commit();
 
     }
 
