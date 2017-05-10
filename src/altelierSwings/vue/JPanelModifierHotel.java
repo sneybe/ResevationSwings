@@ -175,7 +175,7 @@ public class JPanelModifierHotel extends javax.swing.JPanel {
     }//GEN-LAST:event_jtfnumActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Hotel h = new Hotel();
+        Hotel h = hotel;
         h.setNom(this.jtfnom.getText());
         h.setNumero(Long.valueOf(this.jtfnum.getText()));
         h.setRue(this.jtfrue.getText());
