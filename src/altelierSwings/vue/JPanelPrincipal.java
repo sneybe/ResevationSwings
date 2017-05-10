@@ -73,6 +73,11 @@ public class JPanelPrincipal extends javax.swing.JPanel {
         jbcl.setFocusable(false);
         jbcl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbcl.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbcl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbclActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jbcl);
 
         jbres.setText("Reservations");
@@ -90,6 +95,10 @@ public class JPanelPrincipal extends javax.swing.JPanel {
        
        
     }//GEN-LAST:event_JbhActionPerformed
+
+    private void jbclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbclActionPerformed
+        this.remplacecomposantCentral(new JPanelListeClients());
+    }//GEN-LAST:event_jbclActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
