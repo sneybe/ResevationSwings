@@ -21,13 +21,13 @@ public class JPanelListeHotels extends javax.swing.JPanel {
      */
     public JPanelListeHotels() {
         initComponents();
-        
+
         // Code maison
         HotelService service = new HotelService();
         List<Hotel> listeHotels = service.listerHotel();
         TableModelHotels model = new TableModelHotels(listeHotels);
         this.jTableHotels.setModel(model);
-        
+
     }
 
     /**
@@ -77,6 +77,11 @@ public class JPanelListeHotels extends javax.swing.JPanel {
         jBSupprimer.setFocusable(false);
         jBSupprimer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBSupprimer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSupprimerActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBSupprimer);
 
         jBGererChambres.setText("Gérer les Chambres");
@@ -105,24 +110,31 @@ public class JPanelListeHotels extends javax.swing.JPanel {
 
     private void jBAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAjouterActionPerformed
 //        JPanelPrincipal.getSingleton().remove(this);
-    JPanelPrincipal parent=(JPanelPrincipal)this.getParent();
-    
-    parent.remplacecomposantCentral(new JPanelHotel());
-    
-    
-    
-       
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+
+        parent.remplacecomposantCentral(new JPanelHotel());
+
+
     }//GEN-LAST:event_jBAjouterActionPerformed
 
     private void jBModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifierActionPerformed
-     
+
         Long row = (Long) this.jTableHotels.getModel().getValueAt(this.jTableHotels.getSelectedRow(), 0);
         Hotel h = new HotelService().selectHotel(row);
-        
+
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
         parent.remplacecomposantCentral(new JPanelModifierHotel(h));
     }//GEN-LAST:event_jBModifierActionPerformed
+
+    private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
+
+        long row = (long) jTableHotels.getModel().getValueAt(this.jTableHotels.getSelectedRow(), 0);
+        Hotel ho = new HotelService().selectHotel(row);
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+
+        parent.remplacecomposantCentral(new JpanelSupprimeHotel(ho));
+    }//GEN-LAST:event_jBSupprimerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
