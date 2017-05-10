@@ -30,17 +30,14 @@ public class Chambre implements Serializable {
     private String nom;
     private Long numero;
     private Double prix;
-    
+
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
-    
+
     @ManyToMany(mappedBy = "chambres")
     private List<Reservation> reservations = new ArrayList<>();
-    
 
-   
-    
     public String getNom() {
         return nom;
     }
@@ -97,5 +94,5 @@ public class Chambre implements Serializable {
     public String toString() {
         return "atelierswings.entity.Chambre[ id=" + id + " ]";
     }
-    
+
 }

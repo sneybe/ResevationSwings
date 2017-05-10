@@ -33,18 +33,17 @@ public class Reservation implements Serializable {
     private Long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDebut;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFin;
-    
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
-    
+
     @ManyToMany
     @JoinTable(name = "chambre_reservation")
     private List<Chambre> chambres = new ArrayList<>();
-   
 
     public Long getId() {
         return id;
@@ -78,5 +77,5 @@ public class Reservation implements Serializable {
     public String toString() {
         return "atelierswings.entity.Reservation[ id=" + id + " ]";
     }
-    
+
 }

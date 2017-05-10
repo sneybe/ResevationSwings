@@ -43,13 +43,13 @@ public class ClientService {
         Client c = em.find(Client.class, id);
         return c;
     }
-    
+
     public void supprimerClient(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         em.getTransaction().begin();
         em.remove(em.find(Client.class, id));
         em.getTransaction().commit();
-        
+
     }
 
 }

@@ -14,25 +14,23 @@ import javax.swing.table.AbstractTableModel;
  * @author formation
  */
 public class TableModelChambres extends AbstractTableModel {
-    
+
     private List<Chambre> chambres;
 
-    
-    private TableModelChambres(){
-        
+    private TableModelChambres() {
+
     }
-    
+
     public TableModelChambres(List<Chambre> chambres) {
         this.chambres = chambres;
     }
+
     @Override
     public int getRowCount() {
-        
-        return this.chambres.size();
-       
-    }
 
-    
+        return this.chambres.size();
+
+    }
 
     @Override
     public int getColumnCount() {
@@ -41,18 +39,15 @@ public class TableModelChambres extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Chambre chambre= chambres.get(rowIndex);
-        
-        if (columnIndex==0){
+        Chambre chambre = chambres.get(rowIndex);
+
+        if (columnIndex == 0) {
             return chambre.getId();
-        }
-        else if(columnIndex==1){
+        } else if (columnIndex == 1) {
             return chambre.getNom();
-        }
-        
-        else {
+        } else {
             return new RuntimeException("indice de colonne incorrect ");
         }
     }
-    
+
 }

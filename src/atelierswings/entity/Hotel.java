@@ -5,7 +5,6 @@
  */
 package atelierswings.entity;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import static java.util.Collections.list;
@@ -35,10 +34,10 @@ public class Hotel implements Serializable {
     private Long numero;
     private Long codepostale;
     private String rue;
-    
-   @OneToMany(mappedBy = "hotel")
-   private List<Chambre> chambres = new ArrayList<>();
-    
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Chambre> chambres = new ArrayList<>();
+
     public String getNom() {
         return nom;
     }
@@ -111,5 +110,5 @@ public class Hotel implements Serializable {
     public String toString() {
         return "atelierswings.entity.Hotel[ id=" + id + " ]";
     }
-    
+
 }

@@ -14,19 +14,20 @@ import atelierswings.service.HotelService;
  */
 public class JPanelModifierHotel extends javax.swing.JPanel {
 
-   private Hotel hotel;
+    private Hotel hotel;
 
     public JPanelModifierHotel(Hotel hotel) {
         initComponents();
-        
+
         this.hotel = hotel;
         this.jtfnom.setText(hotel.getNom());
         this.jtfrue.setText(hotel.getRue());
         this.jtfnum.setText(String.valueOf(hotel.getNumero()));
         this.jtfloc.setText(hotel.getLocalite());
         this.jtfCode.setText(String.valueOf(hotel.getCodepostale()));
-        
+
     }
+
     public JPanelModifierHotel() {
         initComponents();
     }
@@ -182,10 +183,10 @@ public class JPanelModifierHotel extends javax.swing.JPanel {
         h.setLocalite(this.jtfloc.getText());
         h.setCodepostale(Long.valueOf(this.jtfCode.getText()));
 
-        HotelService hs=new HotelService();
-        
-         hs.modifierHotel(h);
-        JPanelPrincipal parent= (JPanelPrincipal)this.getParent();
+        HotelService hs = new HotelService();
+
+        hs.modifierHotel(h);
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
         parent.remplacecomposantCentral(new JPanelListeHotels());
 

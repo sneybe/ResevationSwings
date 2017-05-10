@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  * @author formation
  */
 public class TableModelClients extends AbstractTableModel {
-    
+
     private List<Client> clients;
 
     private TableModelClients() {
@@ -23,13 +23,10 @@ public class TableModelClients extends AbstractTableModel {
     public TableModelClients(List<Client> clients) {
         this.clients = clients;
     }
-    
-      
-    
 
     @Override
     public int getRowCount() {
-       return clients.size();
+        return clients.size();
     }
 
     @Override
@@ -40,19 +37,18 @@ public class TableModelClients extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Client client = clients.get(rowIndex);
-        switch(columnIndex) {
-            case 0 :
+        switch (columnIndex) {
+            case 0:
                 return client.getId();
-                
-            case 1 :
+
+            case 1:
                 return client.getPrenom();
-            case 2 :
+            case 2:
                 return client.getNom();
             default:
                 return new RuntimeException("L'index indiqué n'est pas correct");
         }
-                
-                    
+
     }
-    
+
 }
