@@ -207,13 +207,7 @@ public class JPanelSupprClient extends javax.swing.JPanel {
     private void jBSuppressionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSuppressionActionPerformed
 
         Client c = client;
-        c.setNom(jTfNom.getText());
-        c.setPrenom(jTfPrenom.getText());
-        c.setTelephone(Long.valueOf(jTfTelephone.getText()));
-        c.setCodePostal(Long.valueOf(jTfCodePostal.getText()));
-        c.setLocalite(jTfLocalite.getText());
-        c.setNumero(Integer.parseInt(jTfNumero.getText()));
-        c.setRue(jTfRue.getText());
+        
 
         ClientService service = new ClientService();
         service.supprimerClient(c.getId());

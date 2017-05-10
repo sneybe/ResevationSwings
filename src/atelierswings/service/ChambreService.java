@@ -58,5 +58,12 @@ public class ChambreService {
         
         return e.find(Chambre.class, id);
     }
+    
+    public void supprimerChambre(Long id) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        em.getTransaction().begin();
+        em.remove(em.find(Chambre.class, id));
+        em.getTransaction().commit();
+    }
 
 }
