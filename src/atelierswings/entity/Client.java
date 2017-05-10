@@ -6,10 +6,13 @@
 package atelierswings.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,6 +32,9 @@ public class Client implements Serializable {
     private String rue;
     private Long codePostal;
     private String localite;
+    
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations = new ArrayList<>();
 
     public String getNom() {
         return nom;

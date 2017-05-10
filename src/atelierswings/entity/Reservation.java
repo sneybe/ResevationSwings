@@ -7,63 +7,44 @@ package atelierswings.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author formation
  */
 @Entity
-public class Chambre implements Serializable {
+public class Reservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nom;
-    private Long numero;
-    private Double prix;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateDebut;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateFin;
     
     @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    @JoinColumn(name = "client_id")
+    private Client client;
     
-    @ManyToMany(mappedBy = "chambres")
-    private List<Reservation> reservations = new ArrayList<>();
-    
-
+    @ManyToMany
+    @JoinTable(name = "chambre_reservation")
+    private List<Chambre> chambres = new ArrayList<>();
    
-    
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
-
-    public Double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(Double prix) {
-        this.prix = prix;
-    }
 
     public Long getId() {
         return id;
@@ -83,10 +64,10 @@ public class Chambre implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Chambre)) {
+        if (!(object instanceof Reservation)) {
             return false;
         }
-        Chambre other = (Chambre) object;
+        Reservation other = (Reservation) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -95,7 +76,7 @@ public class Chambre implements Serializable {
 
     @Override
     public String toString() {
-        return "atelierswings.entity.Chambre[ id=" + id + " ]";
+        return "atelierswings.entity.Reservation[ id=" + id + " ]";
     }
     
 }

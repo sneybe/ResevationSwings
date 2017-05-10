@@ -5,11 +5,12 @@
  */
 package atelierswings.entity;
 
-import java.awt.List;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,8 @@ public class Hotel implements Serializable {
     private Long codepostale;
     private String rue;
     
-   
+   @OneToMany(mappedBy = "hotel")
+   private List<Chambre> chambres = new ArrayList<>();
     
     public String getNom() {
         return nom;
