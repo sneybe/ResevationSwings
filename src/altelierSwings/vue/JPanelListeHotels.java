@@ -83,6 +83,11 @@ public class JPanelListeHotels extends javax.swing.JPanel {
         jBGererChambres.setFocusable(false);
         jBGererChambres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBGererChambres.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBGererChambres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGererChambresActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBGererChambres);
 
         add(jToolBar1, java.awt.BorderLayout.PAGE_START);
@@ -123,6 +128,13 @@ public class JPanelListeHotels extends javax.swing.JPanel {
 
         parent.remplacecomposantCentral(new JPanelModifierHotel(h));
     }//GEN-LAST:event_jBModifierActionPerformed
+
+    private void jBGererChambresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGererChambresActionPerformed
+        Long row = (Long) this.jTableHotels.getModel().getValueAt(this.jTableHotels.getSelectedRow(), 0);
+        Hotel h = new HotelService().selectHotel(row);
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+        parent.remplacecomposantCentral(new JPanelChambre(h));
+    }//GEN-LAST:event_jBGererChambresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
