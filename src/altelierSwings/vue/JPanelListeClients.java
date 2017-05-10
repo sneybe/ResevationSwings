@@ -9,6 +9,9 @@ package altelierSwings.vue;
 import atelierswings.entity.Client;
 import atelierswings.service.ClientService;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -62,12 +65,22 @@ public class JPanelListeClients extends javax.swing.JPanel {
         jBModifier.setFocusable(false);
         jBModifier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBModifier.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModifierActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBModifier);
 
         jBSupprimer.setText("Supprimer");
         jBSupprimer.setFocusable(false);
         jBSupprimer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBSupprimer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSupprimerActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBSupprimer);
 
         jBGReservations.setText("Gérer réservations");
@@ -98,6 +111,21 @@ public class JPanelListeClients extends javax.swing.JPanel {
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
         parent.remplacecomposantCentral(new JPanelClient());
     }//GEN-LAST:event_jBAjoutActionPerformed
+
+    private void jBModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifierActionPerformed
+        Long row =(Long) this.jTClients.getModel().getValueAt(this.jTClients.getSelectedRow(), 0);
+        Client c = new ClientService().selectionClient(row);
+            
+       JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+        parent.remplacecomposantCentral( new JPanelModifClient(c));
+    }//GEN-LAST:event_jBModifierActionPerformed
+
+    private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
+        Long row = (Long)this.jTClients.getModel().getValueAt(this.jTClients.getSelectedRow(), 0);
+        Client c = new ClientService().selectionClient(row);
+        JPanelPrincipal parent = (JPanelPrincipal)this.getParent();
+        parent.remplacecomposantCentral(new JPanelSupprClient(c));
+    }//GEN-LAST:event_jBSupprimerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
