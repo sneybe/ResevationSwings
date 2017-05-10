@@ -19,7 +19,7 @@ import javax.persistence.Query;
  */
 public class HotelService {
 
-    public void Ajouter(Hotel hotel) {
+    public void ajouter(Hotel hotel) {
         EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
         EntityManager ent = en.createEntityManager();
 
@@ -33,30 +33,34 @@ public class HotelService {
         EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
         EntityManager ent = en.createEntityManager();
 
-        
         Query query = ent.createQuery("SELECT h "
                 + "FROM Hotel h ORDER BY h.nom");
 
         List<Hotel> hotel = query.getResultList();
 
-       
-        
-        
         return hotel;
 
     }
 
-    public void ModifierHotel( Hotel hotel, long idhotel) {
-        EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
-        EntityManager en1 =en.createEntityManager();
-        
-     //  Hotel hotel = en1.find( Hotel.class, idhotel);
-       
-       en1.getTransaction().begin();
-       
-       
-       en1.getTransaction().commit();
+    public void modifierHotel(Hotel hotel) {
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager en1 = en.createEntityManager();
+        en1.getTransaction().begin();
+
+        en1.merge(hotel);
+
+        en1.getTransaction().commit();
 
     }
 
+    public Hotel selectHotel(Long id) {
+        
+       EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager en1 = en.createEntityManager();
+           return en1.find(Hotel.class, id);
+      
+        
+     
+
+    }
 }

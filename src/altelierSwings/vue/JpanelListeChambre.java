@@ -55,6 +55,11 @@ public class JpanelListeChambre extends javax.swing.JPanel {
         });
 
         jButton2.setText("Modifier");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Supprimer");
 
@@ -111,6 +116,14 @@ public class JpanelListeChambre extends javax.swing.JPanel {
     
     JPanelPrincipal parent1=(JPanelPrincipal) this.getParent();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Long row = (Long) this.jTabChambre.getModel().getValueAt(this.jTabChambre.getSelectedRow(), 0);
+        Chambre ch= new ChambreService().selectChambre(row);
+          JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+
+        parent.remplacecomposantCentral(new JPanelModiferChambre(ch));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

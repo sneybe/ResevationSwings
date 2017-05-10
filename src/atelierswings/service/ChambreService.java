@@ -18,29 +18,45 @@ import javax.persistence.Query;
  * @author formation
  */
 public class ChambreService {
-    
-    public void AjouterChambre(Chambre chambre){
-        
-        EntityManagerFactory en=Persistence.createEntityManagerFactory("PU");
-        EntityManager e =en.createEntityManager();
-        
+
+    public void AjouterChambre(Chambre chambre) {
+
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager e = en.createEntityManager();
+
         e.getTransaction().begin();
         e.persist(chambre);
         e.getTransaction().commit();
     }
-    
-    public List<Chambre> ListerChambre(){
-        
-       EntityManagerFactory en=Persistence.createEntityManagerFactory("PU");
-       EntityManager e =en.createEntityManager(); 
-       
-       Query query=e.createQuery("SELECT c "
-               + "FROM Chambre c "
-               + "ORDER BY c.nom ");
-               
-        List<Chambre> chambre=query.getResultList();
-        
+
+    public List<Chambre> ListerChambre() {
+
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager e = en.createEntityManager();
+
+        Query query = e.createQuery("SELECT c "
+                + "FROM Chambre c "
+                + "ORDER BY c.nom ");
+
+        List<Chambre> chambre = query.getResultList();
+
         return chambre;
     }
+
+    public void modifierChambre(Chambre chambre) {
+
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager e = en.createEntityManager();
+        e.getTransaction().begin();
+        e.merge(chambre);
+        e.getTransaction().commit();
+    }
     
+    public Chambre selectChambre(long id){
+         EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager e = en.createEntityManager();
+        
+        return e.find(Chambre.class, id);
+    }
+
 }

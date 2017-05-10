@@ -66,6 +66,11 @@ public class JPanelListeHotels extends javax.swing.JPanel {
         jBModifier.setFocusable(false);
         jBModifier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBModifier.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModifierActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBModifier);
 
         jBSupprimer.setText("Supprimer");
@@ -108,6 +113,16 @@ public class JPanelListeHotels extends javax.swing.JPanel {
     
        
     }//GEN-LAST:event_jBAjouterActionPerformed
+
+    private void jBModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifierActionPerformed
+     
+        Long row = (Long) this.jTableHotels.getModel().getValueAt(this.jTableHotels.getSelectedRow(), 0);
+        Hotel h = new HotelService().selectHotel(row);
+        
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+
+        parent.remplacecomposantCentral(new JPanelModifierHotel(h));
+    }//GEN-LAST:event_jBModifierActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
