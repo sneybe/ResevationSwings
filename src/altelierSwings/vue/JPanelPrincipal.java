@@ -67,6 +67,11 @@ public class JPanelPrincipal extends javax.swing.JPanel {
         jbch.setFocusable(false);
         jbch.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbch.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbchActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jbch);
 
         jbcl.setText("Client");
@@ -90,6 +95,10 @@ public class JPanelPrincipal extends javax.swing.JPanel {
        
        
     }//GEN-LAST:event_JbhActionPerformed
+
+    private void jbchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbchActionPerformed
+         this.remplacecomposantCentral(new JpanelListeChambre());
+    }//GEN-LAST:event_jbchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
