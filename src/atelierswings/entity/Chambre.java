@@ -37,6 +37,22 @@ public class Chambre implements Serializable {
     
     @ManyToMany(mappedBy = "chambres")
     private List<Reservation> reservations = new ArrayList<>();
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     
 
    

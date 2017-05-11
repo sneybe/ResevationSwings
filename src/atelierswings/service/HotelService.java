@@ -6,7 +6,6 @@
 package atelierswings.service;
 
 import atelierswings.entity.Hotel;
-import static atelierswings.entity.Hotel_.id;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -64,5 +63,10 @@ public class HotelService {
 
     }
     
-    
+    public Hotel selectHotel(String nom) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Query query = em.createQuery("SELECT h FROM Hotel h WHERE h.nom = ".concat(nom) );
+        
+        return (Hotel)query.getSingleResult();   
+    }
 }

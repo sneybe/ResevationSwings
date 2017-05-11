@@ -29,7 +29,7 @@ public class ChambreService {
         e.getTransaction().commit();
     }
 
-    public List<Chambre> ListerChambre() {
+    public List<Chambre> listerChambre() {
 
         EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
         EntityManager e = en.createEntityManager();
@@ -41,6 +41,12 @@ public class ChambreService {
         List<Chambre> chambre = query.getResultList();
 
         return chambre;
+    }
+    
+    public List<Chambre> listChambreParHotel(Hotel h) {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Query query = em.createQuery(" SELECT c FROM Chambre c JOIN c.hotel h WHERE h.id = " + h.getId() + " ORDER BY c.nom");
+        return query.getResultList();
     }
 
     public void modifierChambre(Chambre chambre) {
@@ -65,5 +71,7 @@ public class ChambreService {
         em.remove(em.find(Chambre.class, id));
         em.getTransaction().commit();
     }
+    
+    
 
 }

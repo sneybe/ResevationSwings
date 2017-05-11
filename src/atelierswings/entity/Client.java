@@ -36,6 +36,14 @@ public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations = new ArrayList<>();
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
     public String getNom() {
         return nom;
     }

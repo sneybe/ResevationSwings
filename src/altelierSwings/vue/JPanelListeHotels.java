@@ -133,7 +133,7 @@ public class JPanelListeHotels extends javax.swing.JPanel {
         Long row = (Long) this.jTableHotels.getModel().getValueAt(this.jTableHotels.getSelectedRow(), 0);
         Hotel h = new HotelService().selectHotel(row);
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
-        parent.remplacecomposantCentral(new JPanelChambre(h));
+        parent.remplacecomposantCentral(new JpanelListeChambre(h));
     }//GEN-LAST:event_jBGererChambresActionPerformed
 
 

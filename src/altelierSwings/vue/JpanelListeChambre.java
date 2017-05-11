@@ -6,6 +6,7 @@
 package altelierSwings.vue;
 
 import atelierswings.entity.Chambre;
+import atelierswings.entity.Hotel;
 import atelierswings.service.ChambreService;
 import atelierswings.service.HotelService;
 import java.util.List;
@@ -19,14 +20,28 @@ public class JpanelListeChambre extends javax.swing.JPanel {
     /**
      * Creates new form JpanelListeChambre
      */
+    
+    private Hotel hotel;
     public JpanelListeChambre() {
         initComponents();
         
         ChambreService service = new ChambreService();
-        List<Chambre> listeChambre = service.ListerChambre();
+        List<Chambre> listeChambre = service.listerChambre();
         TableModelChambres model  = new TableModelChambres(listeChambre);
         this.jTabChambre.setModel(model);
     }
+
+    public JpanelListeChambre(Hotel hotel) {
+        initComponents();
+        this.hotel = hotel;
+        ChambreService service = new ChambreService();
+        List<Chambre> listeChambre = service.listChambreParHotel(hotel);
+        TableModelChambres model  = new TableModelChambres(listeChambre);
+        this.jTabChambre.setModel(model);
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,10 +131,13 @@ public class JpanelListeChambre extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        JPanelPrincipal parent=(JPanelPrincipal)this.getParent();
+    if(hotel == null){
+        parent.remplacecomposantCentral(new JPanelChambre());
+    }
     
-    parent.remplacecomposantCentral(new JPanelChambre());
+    parent.remplacecomposantCentral(new JPanelChambre(hotel));
     
-    JPanelPrincipal parent1=(JPanelPrincipal) this.getParent();
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
