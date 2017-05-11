@@ -63,6 +63,16 @@ public class Client implements Serializable {
     public int getNumero() {
         return numero;
     }
+    
+    
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
     public void setNumero(int numero) {
         this.numero = numero;

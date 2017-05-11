@@ -89,6 +89,11 @@ public class JPanelPrincipal extends javax.swing.JPanel {
         jbres.setFocusable(false);
         jbres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbres.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jbres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbresActionPerformed(evt);
+            }
+        });
         jToolBar2.add(jbres);
 
         add(jToolBar2, java.awt.BorderLayout.PAGE_START);
@@ -107,6 +112,10 @@ public class JPanelPrincipal extends javax.swing.JPanel {
     private void jbchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbchActionPerformed
          this.remplacecomposantCentral(new JpanelListeChambre());
     }//GEN-LAST:event_jbchActionPerformed
+
+    private void jbresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresActionPerformed
+        this.remplacecomposantCentral(new JPanelListeReservation());
+    }//GEN-LAST:event_jbresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

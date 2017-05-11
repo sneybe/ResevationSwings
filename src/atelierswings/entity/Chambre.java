@@ -50,6 +50,22 @@ public class Chambre implements Serializable {
         return numero;
     }
 
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     public void setNumero(Long numero) {
         this.numero = numero;
     }
