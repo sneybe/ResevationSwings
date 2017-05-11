@@ -53,20 +53,28 @@ public class HotelService {
     }
 
     public Hotel selectHotel(Long id) {
-        
-       EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
         EntityManager en1 = en.createEntityManager();
-           return en1.find(Hotel.class, id);
-      
-        
-     
+        return en1.find(Hotel.class, id);
 
     }
-    
-    public Hotel selectHotel(String nom) {
-        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        Query query = em.createQuery("SELECT h FROM Hotel h WHERE h.nom = ".concat(nom) );
-        
-        return (Hotel)query.getSingleResult();   
+
+    public void supprimerHotel(Long id) {
+
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager en1 = en.createEntityManager();
+
+        en1.getTransaction().begin();
+        en1.remove(en1.find(Hotel.class, id));
+        en1.getTransaction().commit();
+
     }
+
+    public Hotel selectHotel(long id) {
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+        EntityManager en1 = en.createEntityManager();
+        return en1.find(Hotel.class, id);
+    }
+
 }

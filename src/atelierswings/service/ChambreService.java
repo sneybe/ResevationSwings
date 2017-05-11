@@ -57,14 +57,14 @@ public class ChambreService {
         e.merge(chambre);
         e.getTransaction().commit();
     }
-    
-    public Chambre selectChambre(long id){
-         EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
+
+    public Chambre selectChambre(long id) {
+        EntityManagerFactory en = Persistence.createEntityManagerFactory("PU");
         EntityManager e = en.createEntityManager();
-        
+
         return e.find(Chambre.class, id);
     }
-    
+
     public void supprimerChambre(Long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         em.getTransaction().begin();

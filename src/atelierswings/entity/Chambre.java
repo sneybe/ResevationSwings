@@ -30,11 +30,11 @@ public class Chambre implements Serializable {
     private String nom;
     private Long numero;
     private Double prix;
-    
+
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
-    
+
     @ManyToMany(mappedBy = "chambres")
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -55,8 +55,6 @@ public class Chambre implements Serializable {
     }
     
 
-   
-    
     public String getNom() {
         return nom;
     }
@@ -69,6 +67,22 @@ public class Chambre implements Serializable {
         return numero;
     }
 
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     public void setNumero(Long numero) {
         this.numero = numero;
     }
@@ -113,5 +127,5 @@ public class Chambre implements Serializable {
     public String toString() {
         return "atelierswings.entity.Chambre[ id=" + id + " ]";
     }
-    
+
 }

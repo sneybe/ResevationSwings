@@ -14,19 +14,20 @@ import atelierswings.service.HotelService;
  */
 public class JPanelModifierHotel extends javax.swing.JPanel {
 
-   private Hotel hotel;
+    private Hotel hotel;
 
     public JPanelModifierHotel(Hotel hotel) {
         initComponents();
-        
+
         this.hotel = hotel;
         this.jtfnom.setText(hotel.getNom());
         this.jtfrue.setText(hotel.getRue());
         this.jtfnum.setText(String.valueOf(hotel.getNumero()));
         this.jtfloc.setText(hotel.getLocalite());
         this.jtfCode.setText(String.valueOf(hotel.getCodepostale()));
-        
+
     }
+
     public JPanelModifierHotel() {
         initComponents();
     }
@@ -175,17 +176,17 @@ public class JPanelModifierHotel extends javax.swing.JPanel {
     }//GEN-LAST:event_jtfnumActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Hotel h = new Hotel();
+        Hotel h = hotel;
         h.setNom(this.jtfnom.getText());
         h.setNumero(Long.valueOf(this.jtfnum.getText()));
         h.setRue(this.jtfrue.getText());
         h.setLocalite(this.jtfloc.getText());
         h.setCodepostale(Long.valueOf(this.jtfCode.getText()));
 
-        HotelService hs=new HotelService();
-        
-         hs.modifierHotel(h);
-        JPanelPrincipal parent= (JPanelPrincipal)this.getParent();
+        HotelService hs = new HotelService();
+
+        hs.modifierHotel(h);
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
         parent.remplacecomposantCentral(new JPanelListeHotels());
 

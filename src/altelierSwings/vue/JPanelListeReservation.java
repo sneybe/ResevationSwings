@@ -9,6 +9,7 @@ import atelierswings.entity.Reservation;
 import atelierswings.service.ReservationService;
 import java.util.List;
 
+
 /**
  *
  * @author formation
@@ -20,10 +21,10 @@ public class JPanelListeReservation extends javax.swing.JPanel {
      */
     public JPanelListeReservation() {
         initComponents();
-        ReservationService service = new ReservationService();
-        List<Reservation> reservations = service.listerReservation();
+        ReservationService res = new ReservationService();
+        List<Reservation>reservations =res.listerReservation();
         TableModelReservation model = new TableModelReservation(reservations);
-        this.jTReservation.setModel(model);
+        this.jTable1.setModel(model);
     }
 
     /**
@@ -36,42 +37,50 @@ public class JPanelListeReservation extends javax.swing.JPanel {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jBAjout = new javax.swing.JButton();
-        jBModifier = new javax.swing.JButton();
-        jBSuppr = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTReservation = new javax.swing.JTable();
-
-        setLayout(new java.awt.BorderLayout());
+        jTable1 = new javax.swing.JTable();
 
         jToolBar1.setRollover(true);
 
-        jBAjout.setText("Ajouter");
-        jBAjout.setFocusable(false);
-        jBAjout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBAjout.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBAjout);
-
-        jBModifier.setText("Modifier");
-        jBModifier.setFocusable(false);
-        jBModifier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBModifier.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBModifier.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ajouter");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBModifierActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jBModifier);
+        jToolBar1.add(jButton1);
 
-        jBSuppr.setText("Supprimer");
-        jBSuppr.setFocusable(false);
-        jBSuppr.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBSuppr.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBSuppr);
+        jButton2.setText("Modifier");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton2);
 
-        add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+        jButton3.setText("Supprimer");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton3);
 
-        jTReservation.setModel(new javax.swing.table.DefaultTableModel(
+        jButton4.setText("Gérer les chambres");
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton4);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,30 +91,52 @@ public class JPanelListeReservation extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTReservation);
+        jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifierActionPerformed
-        Long id =(Long) jTReservation.getModel().getValueAt(jTReservation.getSelectedRow(), 0);
-        ReservationService service = new ReservationService();
-        Reservation res = service.selectReservation(id);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
+
+        parent.remplacecomposantCentral(new JPanelReservation());
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       long row = (long) jTable1.getModel().getValueAt(this.jTable1.getSelectedRow(), 0);
+        Reservation  rs = new ReservationService().selectReservation(row);
+        
+        ReservationService rser = new ReservationService();
+        rser.supprimerReservation(row);
         
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
-        
-        parent.remplacecomposantCentral(new JPanelModifReservation(res));
-        
-        
-    }//GEN-LAST:event_jBModifierActionPerformed
+
+       parent.remplacecomposantCentral(new JPanelListeReservation());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAjout;
-    private javax.swing.JButton jBModifier;
-    private javax.swing.JButton jBSuppr;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTReservation;
+    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

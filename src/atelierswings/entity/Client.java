@@ -32,7 +32,7 @@ public class Client implements Serializable {
     private String rue;
     private Long codePostal;
     private String localite;
-    
+
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -71,6 +71,16 @@ public class Client implements Serializable {
     public int getNumero() {
         return numero;
     }
+    
+    
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
     public void setNumero(int numero) {
         this.numero = numero;
@@ -99,8 +109,6 @@ public class Client implements Serializable {
     public void setLocalite(String localite) {
         this.localite = localite;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -134,5 +142,5 @@ public class Client implements Serializable {
     public String toString() {
         return "atelierswings.entity.Client[ id=" + id + " ]";
     }
-    
+
 }

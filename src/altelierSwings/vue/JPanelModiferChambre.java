@@ -15,9 +15,8 @@ import atelierswings.service.HotelService;
  */
 public class JPanelModiferChambre extends javax.swing.JPanel {
 
- private Chambre chambre;
- 
- 
+    private Chambre chambre;
+
     public JPanelModiferChambre() {
         initComponents();
     }
@@ -25,7 +24,7 @@ public class JPanelModiferChambre extends javax.swing.JPanel {
     public JPanelModiferChambre(Chambre chambre) {
         initComponents();
         this.chambre = chambre;
-        
+
         this.jtfno.setText(chambre.getNom());
         this.jtfnu.setText(String.valueOf(chambre.getNumero()));
         this.jtfpri.setText(String.valueOf(chambre.getPrix()));
@@ -36,8 +35,6 @@ public class JPanelModiferChambre extends javax.swing.JPanel {
         
         
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,7 +142,7 @@ public class JPanelModiferChambre extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Chambre ch= chambre;
+        Chambre ch = chambre;
         ch.setNom(this.jtfno.getText());
         ch.setNumero(Long.valueOf(this.jtfnu.getText()));
         ch.setPrix(Double.valueOf(this.jtfpri.getText()));
@@ -156,15 +153,11 @@ public class JPanelModiferChambre extends javax.swing.JPanel {
        ch.setHotel(hs.selectHotel(this.jtfHotel.getText()));
             
 
-        ChambreService chs =new ChambreService();
-        
-         
-         
-         
+        ChambreService chs = new ChambreService();
 
         chs.modifierChambre(ch);
 
-        JPanelPrincipal parent= (JPanelPrincipal)this.getParent();
+        JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
         parent.remplacecomposantCentral(new JpanelListeChambre());
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -19,10 +19,9 @@ public class JframePrincipale extends JFrame {
     public JframePrincipale() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(400, 300);
-        
 
         this.add(new JPanelPrincipal());
-        
+
         this.setVisible(true);
 
     }
