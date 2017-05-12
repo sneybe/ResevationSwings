@@ -147,10 +147,9 @@ public class JPanelModiferChambre extends javax.swing.JPanel {
         ch.setNumero(Long.valueOf(this.jtfnu.getText()));
         ch.setPrix(Double.valueOf(this.jtfpri.getText()));
         
-        HotelService hs = new HotelService();
+       
         
-        
-       ch.setHotel(hs.selectHotel(this.jtfHotel.getText()));
+      
             
 
         ChambreService chs = new ChambreService();

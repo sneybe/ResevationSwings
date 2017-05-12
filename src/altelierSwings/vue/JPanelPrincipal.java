@@ -114,7 +114,7 @@ public class JPanelPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_jbchActionPerformed
 
     private void jbresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresActionPerformed
-        this.remplacecomposantCentral(new JPanelListeReservation());
+        this.remplacecomposantCentral(new JPanelReservationsListe());
     }//GEN-LAST:event_jbresActionPerformed
 
 

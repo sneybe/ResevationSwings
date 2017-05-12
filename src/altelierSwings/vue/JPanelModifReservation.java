@@ -169,7 +169,7 @@ public class JPanelModifReservation extends javax.swing.JPanel {
         
         resService.modifierReservation(reservation);
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
-        parent.remplacecomposantCentral(new JPanelListeReservation());
+        parent.remplacecomposantCentral(new JPanelReservationsListe());
         
     }//GEN-LAST:event_jBModifierActionPerformed
 

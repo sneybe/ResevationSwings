@@ -27,7 +27,7 @@ public class JPanelReservation extends javax.swing.JPanel {
 
         initComponents();
         ChambreService chser = new ChambreService();
-        ComboBoxChambre comch = new ComboBoxChambre(chser.ListerChambre());
+        ComboBoxChambre comch = new ComboBoxChambre(chser.listerChambre());
         this.jComboBox2.setModel(comch);
 
         ClientService cls = new ClientService();
@@ -160,7 +160,7 @@ public class JPanelReservation extends javax.swing.JPanel {
 
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
-        parent.remplacecomposantCentral(new JPanelListeReservation());
+        parent.remplacecomposantCentral(new JPanelReservationsListe());
         
         
 

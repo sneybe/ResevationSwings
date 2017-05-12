@@ -55,7 +55,11 @@ public class TableModelReservation extends AbstractTableModel {
        }
       
       if(columnIndex == 4) {
-          return res.getChambres().get(rowIndex).getNom();
+         List<Chambre> chambres = res.getChambres();
+         
+         for(Chambre c: chambres) {
+             return c.getNom();
+         }
       }
             
         

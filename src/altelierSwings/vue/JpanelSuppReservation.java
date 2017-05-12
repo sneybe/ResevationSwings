@@ -32,7 +32,7 @@ public class JpanelSuppReservation extends javax.swing.JPanel {
         
         
         ChambreService chs = new ChambreService();
-        ComboBoxChambre cmChambre = new ComboBoxChambre(chs.ListerChambre());
+        ComboBoxChambre cmChambre = new ComboBoxChambre(chs.listerChambre());
         this.jCombrec.setModel(cmChambre);
         
         ClientService hs = new ClientService();
@@ -165,7 +165,7 @@ public class JpanelSuppReservation extends javax.swing.JPanel {
 
         JPanelPrincipal parent = (JPanelPrincipal) this.getParent();
 
-        parent.remplacecomposantCentral(new JPanelListeReservation());
+        parent.remplacecomposantCentral(new JPanelReservationsListe());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

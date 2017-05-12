@@ -8,6 +8,7 @@ package atelierswings.service;
 import atelierswings.entity.Reservation;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -37,30 +38,6 @@ public class ReservationService {
         return em.find(Reservation.class, id);
     }
     
-   
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
-/**
- *
- * @author formation
- */
-public class ReservationService {
-    
-    
-    public void ajouterReservation(Reservation reservations){
-        EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
-        EntityManager ent= en.createEntityManager();
-        
-        ent.getTransaction().begin();
-        
-        ent.persist(reservations);
-        
-        ent.getTransaction().commit();
-        
-    }
-    
     public void supprimerReservation(long id){
        EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
         EntityManager ent= en.createEntityManager();
@@ -74,27 +51,15 @@ public class ReservationService {
         
     }
     
-    public Reservation selectReservation(long id){
-        
-        EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
-        EntityManager ent= en.createEntityManager();
-        
-        return ent.find(Reservation.class, id);
-       
+    public void ajouterReservation(Reservation reservation)
+    {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        em.getTransaction().begin();
+        em.persist(reservation);
+        em.getTransaction().commit();
     }
     
-    public List<Reservation> listerReservation(){
-        EntityManagerFactory en =Persistence.createEntityManagerFactory("PU");
-        EntityManager ent= en.createEntityManager();
-        
-        Query query = ent.createQuery("SELECT r "
-                + "FROM Reservation r "
-                + "ORDER BY r.id ");
-        List<Reservation> res = query.getResultList();
-        
    
-        return res;
-        
-    }
+
      
 }
